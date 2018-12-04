@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html >
+
+<head>
+    <meta charset="UTF-8" />
+
+    <script src="webjars/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="/js/index.js"></script>
+    <script src="/js/TableLoader.js"></script>
+
+</head>
+
+<body style="background-color:#f1f8ff">
+    <header class="container text-center fixed-top">
+        <h2>Event Registration System</h2>
+    </header>
+
+    <div class="container text-center pill-nav">
+        <a href="/">Home</a>
+        <a href="/employee.html">Employee</a>
+        <a class="active" href="/event.html">Event</a>
+        <a href="/about.html">About</a>
+    </div>
+
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span class="panel-title">
+                    <a role="button" href="#getEvents" data-toggle="collapse" onClick="getEvent()">View Events</a>
+                </span>
+            </div>
+            <div class="panel-body collapse" id="getEvents">
+                <table id="eventTable" class="table table-bordered table-striped">
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span class="panel-title">
+                    <a role="button" href="#registerEmployee" data-toggle="collapse">Register Employee to Event</a>
+                </span>
+            </div>
+            <div class="panel-body collapse" id="registerEmployee">
+                <form style="padding-top:16px;">
+                    <div class="form-group">
+                        <label for="EmployeeId">Employee Id:</label>
+                        <input type="text" class="form-control" id="mid" placeholder="Enter Employee Id" name="mid">
+                    </div>
+                    <div class="form-group">
+                        <label for="EventId">Event Id:</label>
+                        <input type="text" class="form-control" id="eid" placeholder="Enter Event Id" name="eid">
+                    </div>
+
+                    <button type="button" class="btn btn-default" onClick="registerEmployeeToEvent(document.getElementById('mid').value,document.getElementById('eid').value)">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span class="panel-title">
+                    <a role="button" href="#addEvent" data-toggle="collapse">Add a Event</a>
+                </span>
+            </div>
+            <div class="panel-body collapse" id="addEvent">
+                <form style="padding-top:16px;" id="addEventForm">
+                    <div class="form-group">
+                        <label for="EventTitle">Event Title:</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter Event Title" name="title">
+                    </div>
+                    <div class="form-group">
+                        <label for="EventDescription">Event Description:</label>
+                        <input type="text" class="form-control" id="description" placeholder="Enter Event Description" name="description">
+                    </div>
+
+                    <button type="button" class="btn btn-default" onClick="addEvent()">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <span class="panel-title">
+                    <a role="button" href="#viewEmployeesOfEvent" data-toggle="collapse">View Employees of Event</a>
+                </span>
+            </div>
+            <div class="panel-body collapse" id="viewEmployeesOfEvent">
+                <form style="padding-top:16px;" id="addEmployeeForm">
+                    <div class="form-group">
+                        <label for="EventTitle">Event Id:</label>
+                        <input type="text" class="form-control" id="eventId" placeholder="Enter Event Id" name="eventId">
+                    </div>
+                    <button type="button" class="btn btn-default" onClick="getemployeesOfEvent(document.getElementById('eventId').value)">Submit</button>
+                </form>
+                <table id="employeesOfEventTable" class="table table-bordered table-striped">
+                </table>
+            </div>
+        </div>
+    </div>
+    
+
+    <footer class="text-center fixed-bottom">
+        <span>Copyright &copy; 2018 Event Registration System. All rights reserved.</span>
+    </footer>
+
+    <!-- Modal PoP Up -->
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title" id="modalTitle"></h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalResult"> </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
