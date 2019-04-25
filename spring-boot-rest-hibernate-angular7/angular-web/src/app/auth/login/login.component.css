@@ -1,0 +1,24 @@
+.btn {
+    color: #f2f2f3;
+    background-color: #e22866;
+    margin-right: 10px;
+}
+
+.mat-form-field {
+    width: 100%;
+    min-width: 200px;
+    color: #f2f2f3;
+    ;
+}
+
+mat-card-title,
+mat-card-content {
+    display: flex;
+    justify-content: center;
+    color: #f2f2f3;
+}
+
+::placeholder,
+ ::-webkit-input-placeholder {
+    color: #f2f2f3;
+}

@@ -1,0 +1,32 @@
+.navbar {
+    background-color: #20313b;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    display: flex;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-item,
+.navbar-brand,
+.nav-link {
+    color: #f2f2f3
+}
+
+.nav-link {
+    font-size: 18px;
+}
+
+.navbar-brand {
+    font-size: 22px;
+}
+
+.btn {
+    color: #f2f2f3;
+    background-color: #e22866;
+    margin-right: 10px;
+}
+
+.logo {
+    margin-right: 10px;
+}

@@ -1,0 +1,44 @@
+<div [ngSwitch]="dialogType">
+    <div *ngSwitchCase="'loginDialog'">
+        <mat-card-title>Login</mat-card-title>
+        <mat-card-content>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+                <mat-form-field>
+                    <input type="text " matInput name="userName" ngModel placeholder="Username">
+                </mat-form-field>
+                <mat-form-field>
+                    <input type="text " matInput name="password" ngModel placeholder="Password">
+                </mat-form-field>
+                <button type="button " class="btn " (click)="onNoClick()" style="background-color: #007dc1;color:#f2f2f3 ">Cancel</button>
+                <button type="submit " class="btn " style="background-color: #e22866;color:#f2f2f3 ">Login</button>
+            </form>
+        </mat-card-content>
+    </div>
+
+    <div *ngSwitchCase="'loginSuccessDialog'">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onNoClick()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <mat-card-content>
+            <p>Logged In Successfuly</p>
+        </mat-card-content>
+    </div>
+
+    <div *ngSwitchCase="'loginFailureDialog'">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onNoClick()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <mat-card-content>
+            <p>Login Failed</p>
+        </mat-card-content>
+    </div>
+
+    <div *ngSwitchCase="'logoutSuccessDialog'">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onNoClick()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        <mat-card-content>
+            <p>Logged Out Successfuly</p>
+        </mat-card-content>
+    </div>
+</div>

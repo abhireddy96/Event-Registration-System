@@ -1,0 +1,26 @@
+.modal-dialog {
+    position: absolute;
+    top: 10%;
+    /*half of the modal height*/
+    margin-top: -20px;
+    left: 50%;
+    /*half of the modal width*/
+    margin-left: -180px;
+}
+
+.btn {
+    color: #f2f2f3;
+    background-color: #e22866;
+    margin-right: 10px;
+}
+
+.mat-form-field {
+    width: 100%;
+    min-width: 300px;
+}
+
+mat-card-title,
+mat-card-content {
+    display: flex;
+    justify-content: center;
+}

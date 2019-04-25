@@ -1,0 +1,23 @@
+ ul {
+     list-style-type: none;
+ }
+ /* li {
+    height: 5%;
+}
+
+img {
+    display: inline-block;
+    height: auto;
+    vertical-align: middle;
+} */
+ 
+ .icon-bar {
+     top: 70%;
+     margin-left: 0px;
+ }
+ 
+ .icon-bar a {
+     display: block;
+     padding: 5px;
+     transition: all 0.3s ease;
+ }

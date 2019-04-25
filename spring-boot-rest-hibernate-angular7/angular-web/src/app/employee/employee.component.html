@@ -1,0 +1,83 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col">
+            <button mat-fab color="accent" (click)="addEmployee()" matTooltip="Add Employee"><mat-icon>add</mat-icon></button>
+        </div>
+        <div class="col-11">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search" class="form-control mr-sm-2" color="#f2f2f3">
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="mat-elevation-z8" id='tableArea'>
+
+        <div class="loading-spinner" *ngIf="isLoadingResults">
+            <mat-spinner *ngIf="isLoadingResults" color="ascent"></mat-spinner>
+        </div>
+
+        <table mat-table [dataSource]="dataSource" multiTemplateDataRows matSort>
+
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee ID </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Employee Name </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="emailID">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email ID </th>
+                <td mat-cell *matCellDef="let employee"> {{employee.emailID}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="joinDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Join Date</th>
+                <td mat-cell *matCellDef="let employee"> {{employee.joinDate}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="edit">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+                <td mat-cell *matCellDef="let row">
+                    <div lass="d-inline">
+                        <button mat-icon-button matTooltip="Edit Employee">
+                            <mat-icon color="accent" selected (click)="editEmployee(row)">edit</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Delete Employee">
+                          <mat-icon color="accent" selected (click)="deleteEmployee(row)">delete</mat-icon>
+                        </button>
+                        <button mat-icon-button matTooltip="Add Event">
+                            <mat-icon  color="accent" selected (click)="addEvent(row)">add</mat-icon>
+                        </button>
+                    </div>
+                </td>
+            </ng-container>
+            <ng-container matColumnDef="expandedDetail" class="fluid-container text-center">
+                <td mat-cell *matCellDef="let employee" [attr.colspan]="displayedColumns.length">
+                    <div class="expand-row-detail" [@detailExpand]="employee == expandedElement ? 'expanded' : 'collapsed'">
+                        <table *ngIf="events!==null" style="margin-left:25%">
+                            <tr>
+                                <th style="font-size: 10px;">Event ID</th>
+                                <th style="font-size: 10px;">Event Title</th>
+                            </tr>
+                            <tr *ngFor="let event of events">
+                                <td>{{event.id}}</td>
+                                <td>{{event.title}}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns "></tr>
+            <tr mat-row *matRowDef="let employee; columns: displayedColumns; " class="expand-row " [class.expanded-row]="expandedElement===employee" (click)="expandedElement=expandedElement===employee ? null : employee;getEmployeeEvent(employee) ">
+            </tr>
+            <tr mat-row *matRowDef="let row; columns: [ 'expandedDetail'] " class="expand-detail-row " (click)=" getEmployeeEvent(row) "></tr>
+        </table>
+        <div matRipple>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20] " showFirstLastButtons></mat-paginator>
+        </div>
+    </div>
+</div>

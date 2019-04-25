@@ -1,0 +1,14 @@
+<div class="fluid-container">
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <mat-form-field>
+                <input type="text " matInput name="userName" ngModel placeholder="Username">
+            </mat-form-field>
+            <mat-form-field>
+                <input type="password" matInput name="password" ngModel placeholder="Password">
+            </mat-form-field>
+            <button type="submit " class="btn " style="background-color: #e22866;color:#f2f2f3 ">Login</button>
+        </form>
+    </mat-card-content>
+</div>

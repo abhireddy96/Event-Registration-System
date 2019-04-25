@@ -1,0 +1,89 @@
+<div [ngSwitch]="dialogType">
+
+    <div *ngSwitchCase="'editDialog'">
+        <div class="modal-header">
+            <h5 class="modal-title" mat-dialog-title>Event Details</h5>
+        </div>
+        <form #updateEventForm="ngForm" (ngSubmit)="onEditConfirm(updateEventForm)">
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="event-id" class="col-form-label">Event ID :</label>
+                    <input type="text" class="form-control" name="id" [ngModel]="event.id" ngModel>
+                </div>
+                <div class="form-group ">
+                    <label for="event-title " class="col-form-label ">Event Title :</label>
+                    <input type="text " class="form-control " name="title" [ngModel]="event.title" ngModel>
+                </div>
+                <div class="form-group ">
+                    <label for="event-description " class="col-form-label ">Event Description :</label>
+                    <input type="text " class="form-control " name="description" [ngModel]="event.description" ngModel>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button " class="btn " (click)="onNoClick() " style="background-color: #007dc1;color:#f2f2f3 ">Close</button>
+                <button type="submit " class="btn " style="background-color: #e22866;color:#f2f2f3 ">Save changes</button>
+            </div>
+        </form>
+    </div>
+
+    <div *ngSwitchCase="'addDialog'">
+        <div class="modal-header">
+            <h5 class="modal-title" mat-dialog-title>Add new Event</h5>
+        </div>
+        <form #addEventForm="ngForm" (ngSubmit)="onAddConfirm(addEventForm)">
+            <div class="modal-body">
+                <div class="form-group ">
+                    <label for="event-title " class="col-form-label ">Event Title :</label>
+                    <input type="text " class="form-control " name="title" ngModel>
+                </div>
+                <div class="form-group ">
+                    <label for="event-description " class="col-form-label ">Event Description :</label>
+                    <input type="text " class="form-control " name="description" ngModel>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button " class="btn " (click)="onNoClick() " style="background-color: #007dc1;color:#f2f2f3 ">Close</button>
+                <button type="submit " class="btn " style="background-color: #e22866;color:#f2f2f3 ">Save changes</button>
+            </div>
+        </form>
+    </div>
+
+    <div *ngSwitchCase="'deleteDialog'">
+        <div class="modal-header ">
+            <h5 class="modal-title ">Delete Event</h5>
+        </div>
+        <div class="modal-body ">
+            <p>Are you sure to delete?</p>
+        </div>
+        <div class="modal-footer ">
+            <button type="button " class="btn " (click)="onNoClick() " style="background-color: #007dc1;color:#f2f2f3 ">No</button>
+            <button type="submit " class="btn " (click)="onDeleteConfirm() " style="background-color: #e22866;color:#f2f2f3 ">Yes</button>
+        </div>
+    </div>
+
+    <div *ngSwitchCase="'addEmployeeDialog'">
+        <div class="modal-header">
+            <h5 class="modal-title" mat-dialog-title>Enroll Employee to Event</h5>
+        </div>
+        <form #enrollEventEventForm="ngForm" (ngSubmit)="onAddevent(enrollEventEventForm)">
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="event-id" class="col-form-label">Event ID :</label>
+                    <input type="text" class="form-control" name="eventID" [ngModel]="event.id" ngModel>
+                </div>
+                <div class="form-group">
+                    <label for="employee-id " class="col-form-label ">Employee ID :</label>
+                    <select id="employee-id" name="employeeID" class="form-control" ngModel>
+                        <option *ngFor="let employee of employees | async" [value]="employee.id">{{employee.id}} - {{employee.name}}</option>
+                      </select>
+                </div>
+            </div>
+            <div class="modal-footer ">
+                <button type="button " class="btn " (click)="onNoClick() " style="background-color: #007dc1;color:#f2f2f3 ">Close</button>
+                <button type="submit " class="btn " style="background-color: #e22866;color:#f2f2f3 ">Save changes</button>
+            </div>
+        </form>
+    </div>
+
+</div>
